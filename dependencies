@@ -1,8 +1,8 @@
 contest (test) git://github.com/citrusbyte/contest.git
 dependencies git://github.com/djanowski/dependencies.git
-dm-core git://github.com/datamapper/dm-core.git
-dm-more git://github.com/datamapper/dm-more.git
-do_sqlite3 git://github.com/datamapper/do.git
+dm-core 0.10.2
+dm-more 0.10.2
+do_sqlite3 0.10.1.1
 faker git://github.com/yyyc514/faker.git
 monk-glue git://github.com/monkrb/glue.git
 override (test) git://github.com/soveran/override.git
