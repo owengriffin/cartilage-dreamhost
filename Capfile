@@ -21,12 +21,29 @@ role :web, domain
 role :app, domain
 role :db,  domain, :primary => true
 
-before 'deploy:restart',       'vendor_gems:install'
+before 'deploy:restart', 'vendor_gems:install'
+after 'deploy:setup', 'vendor_gems:after_setup'
 
 namespace :vendor_gems do
   task :install do
     run "rm -rf #{current_path}/vendor"
     run "ln -s #{applicationdir}/vendor #{current_path}/vendor"
+    run "cd #{current_path} ; dep vendor --all"
+  end
+  task :after_setup do
+    File.open("dependencies", "r").each_line do |line|
+      next unless line =~ /^([\w\-_]+) ?([<~=> \d\.]+)?(?: \(([\w, ]+)\))?(?: ([a-z]+:\/\/.+?))?$/
+      name = $1
+      version = $2
+      environment = $3
+      url = $4
+      if not environment or environment != "test"
+        install_cmd = "gem install --no-ri --no-rdoc #{name}"
+        install_cmd = install_cmd + " -v #{version}" if version and !version.empty?
+        run install_cmd
+      end
+    end
+    run "mkdir #{applicationdir}/vendor"
   end
 end
 
