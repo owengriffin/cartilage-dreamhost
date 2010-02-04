@@ -1,10 +1,10 @@
 
 
 set :user, "ogriffin"
-set :application, "hamoi.owengriffin.com"
+set :application, "cartilage.owengriffin.com"
 set :project, "cartilage"
-set :repository,  "git://github.com/owengriffin/cartilage.git"
-set :domain, "hamoi.owengriffin.com"
+set :repository,  "git://github.com/owengriffin/cartilage-dreamhost.git"
+set :domain, "cartilage.owengriffin.com"
 set :applicationdir, "/home/#{user}/#{application}"  # The standard Dreamhost setup
 
 set :scm, :git
