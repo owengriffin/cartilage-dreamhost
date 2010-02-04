@@ -1,12 +1,10 @@
-
-
 load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 
 set :user, "ogriffin"
-set :application, "hamoi.owengriffin.com"
+set :application, "cartilage.owengriffin.com"
 set :project, "cartilage"
 set :repository,  "git://github.com/owengriffin/cartilage.git"
-set :domain, "hamoi.owengriffin.com"
+set :domain, "cartilage.owengriffin.com"
 set :applicationdir, "/home/#{user}/#{application}"  # The standard Dreamhost setup
 
 set :scm, :git
@@ -25,11 +23,16 @@ before 'deploy:restart', 'vendor_gems:install'
 after 'deploy:setup', 'vendor_gems:after_setup'
 
 namespace :vendor_gems do
+  # Remove the vendor/ folder from the current installation and change it into
+  # a symbolic link to where the gems will be installed. This prevents the 
+  # application from keeping several vendor folders.
   task :install do
     run "rm -rf #{current_path}/vendor"
     run "ln -s #{applicationdir}/vendor #{current_path}/vendor"
     run "cd #{current_path} ; dep vendor --all"
   end
+  # This task iterates through the dependencies and installs them on the remote
+  # server. 
   task :after_setup do
     File.open("dependencies", "r").each_line do |line|
       next unless line =~ /^([\w\-_]+) ?([<~=> \d\.]+)?(?: \(([\w, ]+)\))?(?: ([a-z]+:\/\/.+?))?$/
@@ -48,12 +51,8 @@ namespace :vendor_gems do
 end
 
 namespace :deploy do
+  # Ensure that the server is restarted when we deploy
   task :restart do
     run "touch #{current_path}/tmp/restart.txt" 
   end
 end
-
-
-#Dir['vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
-
-#load 'config/deploy' # remove this line to skip loading any of the default tasks
