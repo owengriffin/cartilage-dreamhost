@@ -1,29 +1,33 @@
-=Cartilage-Dreamhost
+# Cartilage-Dreamhost
 
 http://github.com/owengriffin/cartilage-dreamhost
 
 This is a Monk skeleton, forked from "cartilage", configured to deploy to Dreamhost.
 
-==Terse Instructions
+## Terse Instructions
 
-1. Install [Monk][http://monkrb.com] and [Capistrano][http://capify.org]
+1. Install [Monk](http://monkrb.com) and [Capistrano](http://capify.org)
 2. Add this project as a skelton
-    monk add cartilage-dreamhost git://github.com/owengriffin/cartilage-dreamhost.git
+
+        monk add cartilage-dreamhost git://github.com/owengriffin/cartilage-dreamhost.git
+
 3. Create a new project based on this skeleton
-    monk init --skeleton=cartilage-dreamhost
+
+        monk init --skeleton=cartilage-dreamhost
+
 4. Modify config/deploy.rb and enter the name of your application, and modify the domain names.
 5. Run 
     cap deploy:setup
 6. Now you are ready to deploy your application
     cap deploy:deploy
 
-==TODO
+## TODO
 
 1. Stop re-installing the gems when running setup
 2. Package up the gems using Bundler, or something similar
 3. Add default mappings to Dreamhost MySQL database
 
-==Original README
+## Original README
 
 I called this cartilage because cute names are important in the ruby world. (see lazybones)
 
