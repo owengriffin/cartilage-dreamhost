@@ -17,9 +17,12 @@ This is a Monk skeleton, forked from "cartilage", configured to deploy to Dreamh
 
 4. Modify config/deploy.rb and enter the name of your application, and modify the domain names.
 5. Run 
-    cap deploy:setup
+
+        cap deploy:setup
+    
 6. Now you are ready to deploy your application
-    cap deploy:deploy
+
+        cap deploy:deploy
 
 ## Adding a new dependency
 
