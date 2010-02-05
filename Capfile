@@ -25,7 +25,7 @@ after 'deploy:setup', 'vendor_gems:after_setup'
 namespace :vendor_gems do
   # Ensure that all the Gems are installed
   task :install do
-    run "bundle install"
+    run "cd #{current_path} ; bundle install ; bundle lock"
   end
   # Ensure that bundler is installed on the remote host
   task :after_setup do
