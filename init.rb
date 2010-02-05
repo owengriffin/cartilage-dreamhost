@@ -13,10 +13,10 @@ end
 require "monk/glue"
 require "json"
 require 'sinatra'
-require 'erb'
 require 'dm-core'
 require 'dm-validations'
 require 'dm-timestamps'
+require 'haml'
 
 class Main < Monk::Glue
   set :app_file, __FILE__
