@@ -3,9 +3,11 @@ ROOT_DIR = File.expand_path(File.dirname(__FILE__)) unless defined? ROOT_DIR
 require "rubygems"
 
 begin
-  require "vendor/dependencies/lib/dependencies"
+  require File.expand_path('../.bundle/environment', __FILE__)
 rescue LoadError
-  require "dependencies"
+  require "rubygems"
+  require "bundler"
+  Bundler.require
 end
 
 require "monk/glue"
@@ -15,8 +17,6 @@ require 'erb'
 require 'dm-core'
 require 'dm-validations'
 require 'dm-timestamps'
-
-
 
 class Main < Monk::Glue
   set :app_file, __FILE__
@@ -28,15 +28,13 @@ class Main < Monk::Glue
                       :secret => 'change_me'
 end
 
-
-
 # Load all application files.
-Dir[root_path("app/**/*.rb")].each do |file|
+Dir[Monk::Glue::root_path("app/**/*.rb")].each do |file|
   require file
 end
 
 # Connect to sqlite3.
-sqlite3_path = settings(:sqlite3)[:database]
+sqlite3_path = Monk::Glue::settings(:sqlite3)[:database]
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/#{sqlite3_path}")
 
 

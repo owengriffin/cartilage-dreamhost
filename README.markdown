@@ -21,6 +21,22 @@ This is a Monk skeleton, forked from "cartilage", configured to deploy to Dreamh
 6. Now you are ready to deploy your application
     cap deploy:deploy
 
+## Adding a new dependency
+
+I've modified this skeleton to use bundler. If you need to add a dependency you need to add it to the Gemfile, and follow the instructions on the bundler wiki.
+
+First install the required Gems
+
+    bundle install
+
+Then lock the gems into the project
+
+    bundle lock
+    
+Now ensure that the gems are kept within the project
+
+    bundle pack    
+    
 ## TODO
 
 1. Stop re-installing the gems when running setup
