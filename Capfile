@@ -26,6 +26,7 @@ namespace :vendor_gems do
   # Ensure that all the Gems are installed
   task :install do
     run "cd #{current_path} ; bundle install ; bundle lock"
+    upload("config/settings.yml", "#{current_path}/config/settings.xml")
   end
   # Ensure that bundler is installed on the remote host
   task :after_setup do
