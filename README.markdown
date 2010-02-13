@@ -40,11 +40,6 @@ Now ensure that the gems are kept within the project
 
     bundle pack    
     
-## TODO
-
-1. Stop re-installing the gems when running setup
-2. Package up the gems using Bundler, or something similar
-3. Add default mappings to Dreamhost MySQL database
 
 ## Original README
 
