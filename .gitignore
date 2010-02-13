@@ -2,3 +2,7 @@ bin/*
 vendor/*
 !vendor/cache/
 config/settings.yml
+*~
+*#
+*.html
+*.sqlite3
