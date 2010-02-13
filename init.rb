@@ -37,7 +37,7 @@ end
 if Monk::Glue::settings(:database)[:adapter] == "sqlite3"
   DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/#{Monk::Glue::settings(:database)[:database]}")
 else
-  DataMapper.setup(:default, "#{Monk::Glue::settings(:database)[:adapter]}://#{Monk::Glue::settings(:database)[:user]}:#{Monk::Glue::settings(:database)[:password]}@#{Monk::Glue::settings(:database)[:host]}/#{Monk::Glue::settings(:database)[:database]}")
+  DataMapper.setup(:default, "#{Monk::Glue::settings(:database)[:adapter]}://#{Monk::Glue::settings(:database)[:username]}:#{Monk::Glue::settings(:database)[:password]}@#{Monk::Glue::settings(:database)[:host]}/#{Monk::Glue::settings(:database)[:database]}")
 end
 DataMapper.auto_upgrade!
 Main.run! if Main.run?

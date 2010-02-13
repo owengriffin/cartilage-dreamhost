@@ -22,7 +22,7 @@ This is a Monk skeleton, forked from "cartilage", configured to deploy to Dreamh
     
 6. Now you are ready to deploy your application
 
-        cap deploy:deploy
+        cap deploy
 
 ## Adding a new dependency
 
